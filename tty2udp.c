@@ -69,6 +69,18 @@ static inline int broadcast_udp(int s, const void *data, size_t size, struct soc
     return s;
 }
 
+static void dump(const char *buffer, ssize_t n)
+{
+    int i = 0;
+    while (i < n)
+    {
+        printf("%02.2x", *buffer++);
+        if (++i % 26 == 0) putchar('\n');
+        else putchar(' ');
+    }
+    if (i % 26) putchar('\n');
+}
+
 volatile static bool quit = false;
 volatile static bool hangup = false;
 
@@ -186,7 +198,11 @@ int main(int argc, char * const argv[])
             if (revents & POLLIN)
             {
                 ssize_t bytes = read(fd, buffer, sizeof(buffer));
-                if (verbosity > 1) printf("Read '%ld' bytes from '%s'.\n", bytes, device);
+                if (verbosity > 1)
+                {
+                    printf("Read %ld bytes from '%s'.\n", bytes, device);
+                    if (verbosity > 2) dump(buffer, bytes);
+                }
                 if (bytes <= 0) perror(device);
                 else broadcast_udp(sock, buffer, bytes, &dest);
             }
@@ -205,7 +221,11 @@ int main(int argc, char * const argv[])
             if (revents & POLLIN)
             {
                 ssize_t bytes = read(sock, buffer, sizeof(buffer));
-                if (verbosity > 1) printf("Received '%ld' bytes via UDP.\n", bytes);
+                if (verbosity > 1)
+                {
+                    printf("Received %ld bytes via UDP.\n", bytes);
+                    if (verbosity > 2) dump(buffer, bytes);
+                }
                 if (bytes <= 0) perror("read UDP");
                 else if (write(fd, buffer, bytes) != bytes)
                 {
