@@ -85,7 +85,7 @@ static void trigger_hangup(int sig)
 }
 
 
-int main(int argc, const char *argv[])
+int main(int argc, char * const argv[])
 {
     const char *device = "/dev/ttyUSB0";
     const char *host = NULL;
