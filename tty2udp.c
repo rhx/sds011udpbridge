@@ -94,7 +94,7 @@ int main(int argc, char * const argv[])
     uint16_t port = BROADCAST_PORT;
 
     int ch;
-    while ((ch = getopt(argc, argv, "b:d:h:p:")) != -1) switch(ch)
+    while ((ch = getopt(argc, argv, "b:d:h:p:v")) != -1) switch(ch)
     {
         case 'b': baud = atoi(optarg);  break;
         case 'd': device = optarg;      break;
