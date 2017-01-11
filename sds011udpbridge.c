@@ -1,6 +1,6 @@
 //
 //  main.c
-//  tty2udp
+//  sds011udpbridge
 //
 //  Created by Rene Hexel on 11/1/17.
 //  Copyright © 2017 Rene Hexel. All rights reserved.

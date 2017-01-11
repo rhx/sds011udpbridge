@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F1502F4D1E25954F000E8CC4 /* tty2udp.c in Sources */ = {isa = PBXBuildFile; fileRef = F1502F4C1E25954F000E8CC4 /* tty2udp.c */; };
+		F1502F4D1E25954F000E8CC4 /* sds011udpbridge.c in Sources */ = {isa = PBXBuildFile; fileRef = F1502F4C1E25954F000E8CC4 /* sds011udpbridge.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F1502F411E2594EF000E8CC4 /* tty2udp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tty2udp; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1502F4C1E25954F000E8CC4 /* tty2udp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tty2udp.c; sourceTree = "<group>"; };
+		F1502F411E2594EF000E8CC4 /* sds011udpbridge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sds011udpbridge; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1502F4C1E25954F000E8CC4 /* sds011udpbridge.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sds011udpbridge.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +41,7 @@
 		F1502F381E2594EF000E8CC4 = {
 			isa = PBXGroup;
 			children = (
-				F1502F4B1E25953E000E8CC4 /* tty2udp */,
+				F1502F4B1E25953E000E8CC4 /* sds011udpbridge */,
 				F1502F421E2594EF000E8CC4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,25 +49,25 @@
 		F1502F421E2594EF000E8CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1502F411E2594EF000E8CC4 /* tty2udp */,
+				F1502F411E2594EF000E8CC4 /* sds011udpbridge */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F1502F4B1E25953E000E8CC4 /* tty2udp */ = {
+		F1502F4B1E25953E000E8CC4 /* sds011udpbridge */ = {
 			isa = PBXGroup;
 			children = (
-				F1502F4C1E25954F000E8CC4 /* tty2udp.c */,
+				F1502F4C1E25954F000E8CC4 /* sds011udpbridge.c */,
 			);
-			name = tty2udp;
+			name = sds011udpbridge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F1502F401E2594EF000E8CC4 /* tty2udp */ = {
+		F1502F401E2594EF000E8CC4 /* sds011udpbridge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1502F481E2594EF000E8CC4 /* Build configuration list for PBXNativeTarget "tty2udp" */;
+			buildConfigurationList = F1502F481E2594EF000E8CC4 /* Build configuration list for PBXNativeTarget "sds011udpbridge" */;
 			buildPhases = (
 				F1502F3D1E2594EF000E8CC4 /* Sources */,
 				F1502F3E1E2594EF000E8CC4 /* Frameworks */,
@@ -77,9 +77,9 @@
 			);
 			dependencies = (
 			);
-			name = tty2udp;
-			productName = tty2udp;
-			productReference = F1502F411E2594EF000E8CC4 /* tty2udp */;
+			name = sds011udpbridge;
+			productName = sds011udpbridge;
+			productReference = F1502F411E2594EF000E8CC4 /* sds011udpbridge */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +97,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F1502F3C1E2594EF000E8CC4 /* Build configuration list for PBXProject "tty2udp" */;
+			buildConfigurationList = F1502F3C1E2594EF000E8CC4 /* Build configuration list for PBXProject "sds011udpbridge" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -109,7 +109,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F1502F401E2594EF000E8CC4 /* tty2udp */,
+				F1502F401E2594EF000E8CC4 /* sds011udpbridge */,
 			);
 		};
 /* End PBXProject section */
@@ -119,7 +119,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1502F4D1E25954F000E8CC4 /* tty2udp.c in Sources */,
+				F1502F4D1E25954F000E8CC4 /* sds011udpbridge.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +230,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F1502F3C1E2594EF000E8CC4 /* Build configuration list for PBXProject "tty2udp" */ = {
+		F1502F3C1E2594EF000E8CC4 /* Build configuration list for PBXProject "sds011udpbridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1502F461E2594EF000E8CC4 /* Debug */,
@@ -239,13 +239,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1502F481E2594EF000E8CC4 /* Build configuration list for PBXNativeTarget "tty2udp" */ = {
+		F1502F481E2594EF000E8CC4 /* Build configuration list for PBXNativeTarget "sds011udpbridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1502F491E2594EF000E8CC4 /* Debug */,
 				F1502F4A1E2594EF000E8CC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

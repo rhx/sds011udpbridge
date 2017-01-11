@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:tty2udp.xcodeproj">
+      location = "self:sds011udpbridge.xcodeproj">
    </FileRef>
 </Workspace>
