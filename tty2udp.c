@@ -143,7 +143,7 @@ int main(int argc, char * const argv[])
             { fd, POLLERR | POLLHUP | POLLIN, 0 },
             { sock, POLLERR | POLLHUP | POLLIN, 0 }
         };
-        int n = poll(pollfds, sizeof(pollfds)/sizeof(pollfds[0]), 0);
+        int n = poll(pollfds, sizeof(pollfds)/sizeof(pollfds[0]), -1);
         if (n <= 0)
         {
             if (errno != EAGAIN && errno != EINTR)
