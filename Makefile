@@ -1,17 +1,17 @@
 #
-# Makefile for tty2udp
+# Makefile for sds011udpbridge
 #
 .c.o:
 	${CC} ${CPPFLAGS} ${CFLAGS} -c -o $*.o $*.c
 
-tty2udp: tty2udp.o
-	${CC} -o tty2udp tty2udp.o
+sds011udpbridge: sds011udpbridge.o
+	${CC} -o sds011udpbridge sds011udpbridge.o
 
-tty2udp.o: tty2udp.c
+sds011udpbridge.o: sds011udpbridge.c
 
 .PHONY: all
-all: tty2udp
+all: sds011udpbridge
 
 .PHONY: clean
 clean:
-	-rm -f tty2udp.o tty2udp
+	-rm -f sds011udpbridge.o sds011udpbridge

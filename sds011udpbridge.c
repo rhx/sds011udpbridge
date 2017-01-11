@@ -183,7 +183,7 @@ int main(int argc, char * const argv[])
         }
         else
         {
-            char buffer[4096];
+            char buffer[32];
             short revents = pollfds[0].revents;
             if (revents & POLLERR)
             {
