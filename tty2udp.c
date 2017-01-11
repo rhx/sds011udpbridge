@@ -74,7 +74,7 @@ static void dump(const char *buffer, ssize_t n)
     int i = 0;
     while (i < n)
     {
-        printf("%02.2x", *buffer++);
+        printf("%2.2x", *buffer++ & 0xff);
         if (++i % 26 == 0) putchar('\n');
         else putchar(' ');
     }
@@ -102,7 +102,7 @@ int main(int argc, char * const argv[])
     const char *device = "/dev/ttyUSB0";
     const char *host = NULL;
     int verbosity = 0;
-    speed_t baud = B115200;
+    speed_t baud = B9600;
     uint16_t port = BROADCAST_PORT;
 
     int ch;
