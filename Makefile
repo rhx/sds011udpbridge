@@ -5,7 +5,7 @@
 	${CC} ${CPPFLAGS} ${CFLAGS} -c -o $*.o $*.c
 
 sds011udpbridge: sds011udpbridge.o
-	${CC} -o sds011udpbridge sds011udpbridge.o
+	${CC} -o sds011udpbridge sds011udpbridge.o -lm
 
 sds011udpbridge.o: sds011udpbridge.c sds011udpbridge.h
 
