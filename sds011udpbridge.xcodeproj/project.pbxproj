@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		F1502F411E2594EF000E8CC4 /* sds011udpbridge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sds011udpbridge; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1502F4C1E25954F000E8CC4 /* sds011udpbridge.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sds011udpbridge.c; sourceTree = "<group>"; };
+		F1502F621E26CDED000E8CC4 /* sds011udpbridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sds011udpbridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				F1502F4C1E25954F000E8CC4 /* sds011udpbridge.c */,
+				F1502F621E26CDED000E8CC4 /* sds011udpbridge.h */,
 			);
 			name = sds011udpbridge;
 			sourceTree = "<group>";
