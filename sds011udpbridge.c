@@ -15,7 +15,6 @@
 #include <signal.h>
 #include <errno.h>
 #include <poll.h>
-#include <math.h>
 #include <sys/param.h>
 #include <sys/termios.h>
 #include <sys/socket.h>
@@ -257,7 +256,7 @@ int main(int argc, char * const argv[])
                             htons(0)
                         };
                         if (verbosity)
-                            printf("avg2.5 = %u +/- %u (var: %u), avg10 = %u +/- %u (var: %u)\n", (int)mean25, (int)sqrt(var25), (int)var25, (int)mean10, (int)sqrt(var10), (int)var10);
+                            printf("avg2.5 = %g (var: %g), avg10 = %g (var: %g)\n", mean25 / 10.0, var25 / 100.0, mean10 / 10.0, var10 / 100.0);
 
                         if (broadcast_udp(sock, &packet, sizeof(packet), &dest) >= 0 ||
                             naccum >= MAXACCUM)
