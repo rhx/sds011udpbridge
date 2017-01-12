@@ -7,7 +7,7 @@
 sds011udpbridge: sds011udpbridge.o
 	${CC} -o sds011udpbridge sds011udpbridge.o
 
-sds011udpbridge.o: sds011udpbridge.c
+sds011udpbridge.o: sds011udpbridge.c sds011udpbridge.h
 
 .PHONY: all
 all: sds011udpbridge
