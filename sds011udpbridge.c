@@ -239,7 +239,12 @@ int main(int argc, char * const argv[])
                         if (verbosity)
                             printf("avg2.5 = %u, avg10 = %u\n", (int)avg25, (int)avg10);
 
-                        broadcast_udp(sock, &packet, sizeof(packet), &dest);
+                        if (broadcast_udp(sock, &packet, sizeof(packet), &dest) >= 0)
+                        {
+                            accum25 = 0;
+                            accum10 = 0;
+                            naccum = 0;
+                        }
                     }
                 }
             }
