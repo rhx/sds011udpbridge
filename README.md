@@ -1,7 +1,6 @@
-# tty2udp
-Simple bridge that broadcasts out serial data to UDP.
+# sds011udpbridge
+Simple bridge that averages SDS011 serial data and broadcasts them out via UDP.
 
 ### TODO
  - implement unicast via `-h destination`
- - implement binding to specific port to allow UDP -> serial traffic as well
  
