@@ -15,6 +15,7 @@
 #include <signal.h>
 #include <errno.h>
 #include <poll.h>
+#include <math.h>
 #include <sys/param.h>
 #include <sys/termios.h>
 #include <sys/socket.h>
@@ -23,10 +24,14 @@
 #include <netdb.h>
 #include "sds011udpbridge.h"
 
-uint32_t accum25 = 0;   // pm2.5 values accumulated
-uint32_t accum10 = 0;   // pm10 values accumulated
-uint16_t naccum = 0;    // number of values accumulated
-uint16_t maxaccum = 60; // number of values to average
+#define MAXACCUM    8192        // maximum number of measurements to accumulate
+
+uint32_t accum25 = 0;           // pm2.5 values accumulated
+uint32_t accum10 = 0;           // pm10 values accumulated
+uint16_t naccum = 0;            // number of values accumulated
+uint16_t maxaccum = 60;         // number of values to average
+uint16_t pm25vals[MAXACCUM];    // individual pm25 values
+uint16_t pm10vals[MAXACCUM];    // individual pm10 values
 
 static void usage(const char *cmd)
 {
@@ -223,23 +228,39 @@ int main(int argc, char * const argv[])
                     const uint16_t pm10val = pm10(&buffer.data);
                     accum25 += pm25val;
                     accum10 += pm10val;
+                    pm25vals[naccum] = pm25val;
+                    pm10vals[naccum] = pm10val;
                     if (verbosity > 1)
                         printf("PM2.5 = %u, PM10 = %u\n", (int)pm25val, (int)pm10val);
                     if (++naccum >= maxaccum)
                     {
-                        uint16_t avg25 = accum25 / naccum;
-                        uint16_t avg10 = accum10 / naccum;
+                        const uint16_t mean25 = accum25 / naccum;
+                        const uint16_t mean10 = accum10 / naccum;
+                        uint32_t sd25 = 0;
+                        uint32_t sd10 = 0;
+                        for (int i = 0; i < naccum; i++)
+                        {
+                            const int16_t d25 = (int16_t)pm25vals[i] - (int16_t)mean25;
+                            const int16_t d10 = (int16_t)pm10vals[i] - (int16_t)mean10;
+                            const int32_t sq25 = d25 * d25;
+                            const int32_t sq10 = d10 * d10;
+                            sd25 += sq25;
+                            sd10 += sq10;
+                        }
+                        const uint16_t var25 = sd25 / (naccum-1);
+                        const uint16_t var10 = sd10 / (naccum-1);
                         struct SDS011Avg packet =
                         {
-                            htons(avg25), htons(avg10),
-                            htons(0), htons(0), // FIXME: needs variance calculation
+                            htons(mean25), htons(mean10),
+                            htons(var25), htons(var10),
                             htons(naccum),
                             htons(0)
                         };
                         if (verbosity)
-                            printf("avg2.5 = %u, avg10 = %u\n", (int)avg25, (int)avg10);
+                            printf("avg2.5 = %u +/- %u (var: %u), avg10 = %u +/- %u (var: %u)\n", (int)mean25, (int)sqrt(var25), (int)var25, (int)mean10, (int)sqrt(var10), (int)var10);
 
-                        if (broadcast_udp(sock, &packet, sizeof(packet), &dest) >= 0)
+                        if (broadcast_udp(sock, &packet, sizeof(packet), &dest) >= 0 ||
+                            naccum >= MAXACCUM)
                         {
                             accum25 = 0;
                             accum10 = 0;
