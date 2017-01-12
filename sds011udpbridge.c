@@ -253,7 +253,7 @@ int main(int argc, char * const argv[])
                             htons(mean25), htons(mean10),
                             htons(var25), htons(var10),
                             htons(naccum),
-                            htons(0)
+                            buffer.data.id0, buffer.data.id1
                         };
                         if (verbosity)
                             printf("avg2.5 = %g (var: %g), avg10 = %g (var: %g)\n", mean25 / 10.0, var25 / 100.0, mean10 / 10.0, var10 / 100.0);

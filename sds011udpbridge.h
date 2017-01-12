@@ -97,7 +97,8 @@ struct SDS011Avg
     uint16_t variance25;    // variance of PM2.5 measurements (nyi)
     uint16_t variance10;    // variance of PM10 measurements (nyi)
     uint16_t measurements;  // number of measurements averaged
-    uint16_t _pad;          // for future extension (zero)
+    uint8_t  id0;           // sensor ID byte 0
+    uint8_t  id1;           // sensor ID byte 1
 };
 
 #endif /* sds011udpbridge_h */
